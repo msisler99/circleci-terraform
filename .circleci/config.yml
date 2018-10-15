@@ -1,28 +1,18 @@
 version: 2.0
 jobs:
   terraform_plan:
-    docker:
+   docker:
       - image: hashicorp/terraform:0.11.7
-    steps:
+   steps:
       - run:
           name: Checkout
           command: |
             checkout
             terraform init terraform init -backend-config="bucket=$BUCKET" -backend-config="key=terraform.tfstate" -backend-config="region=us-west-2"
             terraform plan
-
-  terraform_apply:
-    steps:
-      - run:
-          name: Apply
-          command: |
-            terraform apply -auto-approve
-
- workflows:
+   
+workflows:
   version: 2
   dev_plan:
     jobs:
       - terraform_plan
-      - terraform_apply
-        requires:
-           terraform_plan
