@@ -8,11 +8,16 @@ jobs:
       - run: terraform init terraform init -backend-config="bucket=$BUCKET" -backend-config="key=terraform.tfstate" -backend-config="region=us-west-2"
       - run: terraform plan
 
+  terraform_apply:
+    steps:
+      - run: terraform apply -auto-approve
+
+
 workflows:
   version: 2
   dev_plan:
     jobs:
       - terraform_plan
-      - terraform apply -auto-approve
+      - terraform_apply
         requires:
            terraform_plan
