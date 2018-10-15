@@ -13,7 +13,7 @@ jobs:
       - run: terraform apply -auto-approve
 
 
-workflows:
+ workflows:
   version: 2
   dev_plan:
     jobs:
