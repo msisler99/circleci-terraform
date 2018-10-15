@@ -3,24 +3,14 @@ jobs:
   terraform_plan:
     docker:
       - image: hashicorp/terraform:0.11.7
-    environment:
-      TF_VAR_TAG: project1
     steps:
       - checkout
-      - run: terraform init -backend-config=config/${ENV}.config
-      - run: terraform get --update
-      - run: terraform plan -var-file=conifg/${ENV}.tfvars
+      - run: terraform init terraform init -backend-config="bucket=$BUCKET" -backend-config="key=terraform.tfstate" -backend-config="region=us-west-2"
+      - run: terraform plan
 
 workflows:
   version: 2
   dev_plan:
     jobs:
       - terraform_plan
-    environment:
-      ENV: dev
-  svt_plan:
-    jobs:
-      - terraform_plan
-    environment:
-      ENV: svt
-
+      - terraform apply -auto-approve
