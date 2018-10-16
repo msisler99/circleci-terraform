@@ -9,7 +9,7 @@ jobs:
           command: |
             terraform init
             #terraform init -backend-config="bucket=$BUCKET" -backend-config="key=terraform.tfstate" -backend-config="region=us-west-2"
-            terraform plan
+            #terraform plan
    
 workflows:
   version: 2
