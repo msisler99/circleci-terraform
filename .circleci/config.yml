@@ -5,10 +5,10 @@ jobs:
       - image: hashicorp/terraform:0.11.7
    steps:
       - run:
-          name: Checkout
+          name: Init and Apply
           command: |
             terraform init
-            terraform init -backend-config="bucket=$BUCKET" -backend-config="key=terraform.tfstate" -backend-config="region=us-west-2"
+            #terraform init -backend-config="bucket=$BUCKET" -backend-config="key=terraform.tfstate" -backend-config="region=us-west-2"
             terraform plan
    
 workflows:
