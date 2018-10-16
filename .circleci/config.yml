@@ -14,5 +14,5 @@ jobs:
 workflows:
   version: 2
   dev_plan:
-    jobs:
+   jobs:
       - terraform_plan
