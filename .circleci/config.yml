@@ -8,6 +8,7 @@ jobs:
           name: Init and Apply
           command: |
             terraform init
+            pwd
    
 workflows:
   version: 2
