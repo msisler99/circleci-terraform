@@ -16,7 +16,8 @@ jobs:
             terraform init
             ls -l
             terraform plan
-            terraform apply
+            terraform apply -auto-approve
+            ls -l
    
 workflows:
   version: 2
