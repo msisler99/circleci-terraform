@@ -16,6 +16,7 @@ jobs:
             terraform init
             ls -l
             terraform plan
+            terraform apply
    
 workflows:
   version: 2
