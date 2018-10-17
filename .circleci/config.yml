@@ -7,9 +7,10 @@ jobs:
       - run:
           name: Init and Apply
           command: |
+            git clone https://github.com/msisler99/circleci-terraform.git
             pwd
             ls -la
-            git clone https://github.com/msisler99/circleci-terraform.git
+
             terraform init
    
 workflows:
