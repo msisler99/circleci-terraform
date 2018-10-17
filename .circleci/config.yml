@@ -19,6 +19,7 @@ jobs:
             terraform plan
             terraform apply -auto-approve
             ls -la
+            
    
 workflows:
   version: 2
