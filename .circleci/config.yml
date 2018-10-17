@@ -3,7 +3,6 @@ jobs:
   terraform_plan:
    docker:
       - image: hashicorp/terraform:0.11.7 
-   working_directory: ~/project
    steps:
       - run:
           name: Init and Apply
