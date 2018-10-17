@@ -12,12 +12,12 @@ jobs:
             ls -la
             cd circleci-terraform
             pwd
-            ls -l
+            ls -la
             terraform init
-            ls -l
+            ls -la
             terraform plan
             terraform apply -auto-approve
-            ls -l
+            ls -la
    
 workflows:
   version: 2
