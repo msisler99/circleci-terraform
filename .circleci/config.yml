@@ -11,6 +11,7 @@ jobs:
             pwd
             ls -la
             cd circleci-terraform
+            terraform -version
             pwd
             ls -la
             terraform init
