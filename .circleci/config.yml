@@ -8,7 +8,7 @@ jobs:
           name: Init and Apply
           command: |
             pwd
-            ls -l
+            ls -la
             terraform init
    
 workflows:
