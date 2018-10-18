@@ -19,7 +19,6 @@ jobs:
             terraform plan
             terraform apply -auto-approve
             ls -la
-            terraform destroy -auto-approve
             
    
 workflows:
