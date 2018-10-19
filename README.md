@@ -18,7 +18,7 @@ This repository can be "linked" to a CircleCi project that monitors for GitHub c
 - Refer to https://github.com/ca-mmis/infrastructure-private/blob/master/prototype/README.md for setting up the AWS IAM user, creating an AWS S3 bucket and creating the necessary DynamoDB table.
 
 ### CircleCi project setup:
-#The following steps are requird to setup a CircleCi project and "link" the project to this GitHub repository;
+#The following steps are required to setup a CircleCi project and "link" the project to this GitHub repository;
 
 - Login to CircleCi (web) the assumption is that your CircleCi is already linked to GitHub).
 - Select the main branch in the upper left hand corner of the circleCi main screen
