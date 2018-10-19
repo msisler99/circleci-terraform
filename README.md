@@ -33,15 +33,16 @@ The following steps are required to setup a CircleCi project and "link" the proj
 
 ### Following the CircleCi project:
 
-CircleCi is actively following a project when the prjects tab shows "Unfollow project"
-The Terraform logic will occur when something is commited to the GitHub repository.
+CircleCi is actively following a project when the project's status shows "Unfollow project"
+The Terraform processing will occur when something is commited to the GitHub repository.
 
 ### Reviewing the running results of a commit:
-- Commit a change to the repository, for demonstration purposes, modify the variables.tf file and change the value of the EC2_instance_type from "t2.micro" to "t2.small" or vice versa based on it's current value.
+
+- Commit a change to the repository, for demonstration purposes modify the variables.tf file and change the value of the EC2_instance_type from "t2.micro" to "t2.small" or vice versa based on it's current value.
 - Go to the "Jobs" tab to see active jobs
 - Click on the job status button to see more detail about jobs.
-- view the changes in the AWS environment by using the AWS console
+- View the changes in the AWS environment by using the AWS console
 
-Changes will continue for a running CircleCi project.
-To stop following a project, click on the "Ad Prokjects" tab and select "Unfollow Project". Unfollowing a project will suspoend the montioring of /gitHub checkins but wiull leave the project in place in CircleCi. Following the project again will resume the monitoring of Gitzhub checkins.
+Changes will continue while a CircleCi project is running and monitoring the GitHub repository.
+To stop following a project, click on the "Add Projects" tab and select "Unfollow Project". Unfollowing a project will suspend the montioring of /gitHub checkins but will leave the project in place in CircleCi. Following the project again will resume the monitoring of GitHub checkins.
 
