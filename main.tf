@@ -1,5 +1,5 @@
 provider "aws" {
-  region     = "{$var_aws_region}"
+  region     = "{$var.aws_region}"
 }
  
  resource "aws_instance" "Terraform" {
