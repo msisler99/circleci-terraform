@@ -36,4 +36,5 @@ CircleCi is actively following a project when the prjects tab shows "Unfollow pr
 The Terraform logic will occur when something is commited to the GitHub repository.
 
 ### Reviewing the running results of a commit:
-- Commit a change to the repository, for demonstration purposes, modify the variables.tf file and change the value of the EC2 instance variabl type
+- Commit a change to the repository, for demonstration purposes, modify the variables.tf file and change the value of the EC2_instance_type from "t2.micro" to "t2.small" or vice versa basedon it's current value.
+- 
