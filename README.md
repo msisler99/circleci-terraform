@@ -5,7 +5,7 @@ This repository can be "linked" to a CircleCi project that monitors for GitHub c
 
 - Downloads a docker image in which to run the Terraform commands.
 - Downloads the contents of the GitHub repository to the docker image.
-- Runs a Terraform "init" command to create/update the Terraform state file.
+- Runs a Terraform "init" command to create/update the Terraform remote state file stored on S3.
 - Runs a Terraform "plan" command to show the proposed changes.
 - Runs a Terraform "apply" command to apply the changes to the AWS environment.
 - Exits and deletes the docker image when completed successfully.
