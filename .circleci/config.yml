@@ -8,18 +8,13 @@ jobs:
           name: Init and Apply
           command: |
             git clone https://github.com/msisler99/circleci-terraform.git
-            pwd
-            ls -la
             cd circleci-terraform
-            terraform -version
-            pwd
-            ls -la
             terraform init
-            ls -la
             terraform plan
             terraform apply -auto-approve
-            ls -la
-            terraform destroy -auto-approve
+            
+            #uncomment the next line in order to remove the resources created above and rerun.
+            #terraform destroy -auto-approve
    
 workflows:
   version: 2
