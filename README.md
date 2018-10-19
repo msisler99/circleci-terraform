@@ -12,11 +12,11 @@ This repository is "linked" to a CircleCi project that monitors for GitHub commi
 
 ## Dependencies:
 - An AWS IAM user with appropriate permissions needs to be created and the credentials placed in the CircleCi project.
-Refer to https://github.com/ca-mmis/infrastructure-private/blob/master/prototype/README.md for setting up the AWS IAM user and granting the appropriate priveleges to the user.
 - An AWS S3 bucket needs to be created to store Terraform state file.
 - An AWS DynamoDB table needs to be created to maintain lock state for the Teraform state file.
+Refer to https://github.com/ca-mmis/infrastructure-private/blob/master/prototype/README.md for setting up the AWS IAM user and creating the necessary DynamoDB table.
 - A CircleCi project must be created that is linked to this repository.
-- 
+
 ### CircleCi project setup:
 #The following steps are requird to setup a CircleCi project and "link" the project to this GitHub repository;
 
@@ -37,5 +37,11 @@ CircleCi is actively following a project when the prjects tab shows "Unfollow pr
 The Terraform logic will occur when something is commited to the GitHub repository.
 
 ### Reviewing the running results of a commit:
-- Commit a change to the repository, for demonstration purposes, modify the variables.tf file and change the value of the EC2_instance_type from "t2.micro" to "t2.small" or vice versa basedon it's current value.
-- 
+- Commit a change to the repository, for demonstration purposes, modify the variables.tf file and change the value of the EC2_instance_type from "t2.micro" to "t2.small" or vice versa based on it's current value.
+- Go to the "Jobs" tab to see active jobs
+- Click on the job status button to see more detail about jobs.
+- view the changes in the AWS environment by using the AWS console
+
+Changes will continue for a running CircleCi project.
+To stop following a project, click on the "Ad Prokjects" tab and select "Unfollow Project". Unfollowing a project will suspoend the montioring of /gitHub checkins but wiull leave the project in place in CircleCi. Following the project again will resume the monitoring of Gitzhub checkins.
+
