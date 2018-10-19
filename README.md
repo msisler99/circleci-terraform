@@ -10,16 +10,30 @@ This repository is "linked" to a CircleCi project that monitors for GitHub commi
 - Runs a Terraform "apply" command to apply the changes to the AWS environment.
 - Exits and deletes the docker image when completed successfully.
 
-## Dependenciesz:
+## Dependencies:
 - An AWS user with appropriate permissions needs to be created and the credentials placed in the CircleCi project.
 - An AWS S3 bucket needs to be created to store Terraform state file.
 - An AWS DynamoDB table needs to be created to maintain lock state for the Teraform state file.
 - A circleCi project must be created that is linked to this repository.
 - 
-### Operating logic
-This repository will need to be added to CircleCi as a project.
-The CircleCi project needs to have the AWs credentails configured.
+### CircleCi project setup:
+#The following steps are requird to setup a CircleCi project and "link" the project to this GitHub repository;
 
-adding a list
-- 1
-- 2
+- Login to CircleCi (web) the assumption is that your CircleCi is already linked to GitHub).
+- Select the main branch in the upper left hand corner of the circleCi main screen
+- Select "Add Projects" tab
+- Select "setup project" box next to the line listing this repository
+- Select "Start Building" box 
+  Note: nothing will build at this time, building will be triggered by a GitHub commit action
+- Select "Add Projects" tab again if necessary
+- Click on the repository name of the project you are creating, you should see the "Jobs" screen
+- Click on the gear icon next to the job, this will show the settings for the job
+- Select "AWS Permissions" and enter the Access Key ID and Secret Key ID for the AWS user described above in the Dependencies section
+
+### Following the CircleCi project:
+
+CircleCi is actively following a project when the prjects tab shows "Unfollow project"
+The Terraform logic will occur when something is commited to the GitHub repository.
+
+### Reviewing the running results of a commit:
+- Commit a change to the repository, for demonstration purposes, modify the variables.tf file and change the value of the EC2 instance variabl type
