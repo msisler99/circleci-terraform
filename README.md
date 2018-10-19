@@ -38,7 +38,7 @@ The Terraform processing will occur when something is commited to the GitHub rep
 
 ### Reviewing the running results of a commit:
 
-- Commit a change to the repository, for demonstration purposes modify the variables.tf file and change the value of the EC2_instance_type from "t2.micro" to "t2.small" or vice versa based on it's current value.
+- Commit a change to the repository. For demonstration purposes, modify the variables.tf file and change the value of the EC2_instance_type from "t2.micro" to "t2.small" or vice versa based on it's current value.
 - Go to the "Jobs" tab to see active jobs
 - Click on the job status button to see more detail about jobs.
 - View the changes in the AWS environment by using the AWS console
