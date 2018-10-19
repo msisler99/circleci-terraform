@@ -14,8 +14,8 @@ This repository can be "linked" to a CircleCi project that monitors for GitHub c
 - An AWS IAM user with appropriate permissions needs to be created and the credentials placed in the CircleCi project.
 - An AWS S3 bucket needs to be created to store Terraform state file.
 - An AWS DynamoDB table needs to be created to maintain lock state for the Teraform state file.
-Refer to https://github.com/ca-mmis/infrastructure-private/blob/master/prototype/README.md for setting up the AWS IAM user and creating the necessary DynamoDB table.
 - A CircleCi project must be created that is linked to this repository.
+Refer to https://github.com/ca-mmis/infrastructure-private/blob/master/prototype/README.md for setting up the AWS IAM user, creating an AWS S3 bucket and creating the necessary DynamoDB table.
 
 ### CircleCi project setup:
 #The following steps are requird to setup a CircleCi project and "link" the project to this GitHub repository;
