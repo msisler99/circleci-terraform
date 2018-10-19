@@ -7,32 +7,27 @@ variable "aws_region" {
 #  description = "AWS account ID"
 #}
 
-variable "az_count" {
-  description = "Number of AZs to cover in a given AWS region"
-  default     = "2"
+variable "AMI_Id" {
+  description = "AMI Id to use when creating an EC2 instance"
+  default     = "ami id here"
 }
 
-variable "app_image" {
-  description = "Docker image to run in the ECS cluster"
-  default     = "adongy/hostname-docker:latest"
+variable "EC2_instance_type" {
+  description = "Instance type to use when creating the EC2 instance"
+  default     = "t2-micro"
 }
 
-variable "app_port" {
-  description = "Port exposed by the docker image to redirect traffic to"
-  default     = 3000
+variable "S3_bucket_name" {
+  description = "S3 bucket name for storing remote Terraform state file"
+  default     = "ttg-tf-test-bucket"
 }
 
-variable "app_count" {
-  description = "Number of docker containers to run"
-  default     = 2
+variable "remote_state_file" {
+  description = "Name of Terraform remote state file stored in ?S3 bucket"
+  default     = "terraform.tfstate"
 }
 
-variable "fargate_cpu" {
-  description = "Fargate instance CPU units to provision (1 vCPU = 1024 CPU units)"
-  default     = "256"
-}
-
-variable "fargate_memory" {
-  description = "Fargate instance memory to provision (in MiB)"
-  default     = "512"
+variable "dynamodb_table_name" {
+  description = "DynamoDb table name setup for locking S3 bucket remote state file"
+  default     = "terraform-state-lock-dev"
 }
