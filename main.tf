@@ -1,10 +1,10 @@
 provider "aws" {
-  region     = "us-west-2"
+  region     = "{$var_aws_region}"
 }
  
  resource "aws_instance" "Terraform" {
    ami            = "ami-0d1000aff9a9bad89"
-   instance_type  = "t2.small" 
+   instance_type  = "${EC2_instance_type}" 
    tags { 
      Name = "Terraform" 
    } 
