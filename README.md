@@ -11,10 +11,11 @@ This repository is "linked" to a CircleCi project that monitors for GitHub commi
 - Exits and deletes the docker image when completed successfully.
 
 ## Dependencies:
-- An AWS user with appropriate permissions needs to be created and the credentials placed in the CircleCi project.
+- An AWS IAM user with appropriate permissions needs to be created and the credentials placed in the CircleCi project.
+Refer to https://github.com/ca-mmis/infrastructure-private/blob/master/prototype/README.md for setting up the AWS IAM user and granting the appropriate priveleges to the user.
 - An AWS S3 bucket needs to be created to store Terraform state file.
 - An AWS DynamoDB table needs to be created to maintain lock state for the Teraform state file.
-- A circleCi project must be created that is linked to this repository.
+- A CircleCi project must be created that is linked to this repository.
 - 
 ### CircleCi project setup:
 #The following steps are requird to setup a CircleCi project and "link" the project to this GitHub repository;
