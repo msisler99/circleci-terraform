@@ -4,7 +4,7 @@ provider "aws" {
  
  resource "aws_instance" "Terraform" {
    ami            = "${var.AMI_Id}"
-   instance_type  = "${EC2_instance_type}" 
+   instance_type  = "${var.EC2_instance_type}" 
    tags { 
      Name = "Terraform" 
    } 
