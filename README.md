@@ -4,7 +4,7 @@
 This repository is "linked" to a CircleCi project that monitors for GitHub commits. When an artifact is commited to the repository, CircleCi wakes up and performs the following steps:
 
 - Downloads a docker image in which to run the Terraform commands.
-- Downloads the contents of the GiHub repository to the docker image.
+- Downloads the contents of the GitHub repository to the docker image.
 - Runs a Terraform "init" command to read/update the Terraform state file.
 - Runs a Terraform "plan" command to show the proposed changes.
 - Runs a Terraform "apply" command to apply the changes to the AWS environment.
