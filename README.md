@@ -1,4 +1,4 @@
-## Example of using Circleci and Terraform to create and maintain AWS resources when Infrastructure code is Committed to a specific GitHub repository.
+## Using Circleci and Terraform to create and maintain AWS resources when Infrastructure code is Committed to a specific GitHub repository.
 
 ## General process flow:
 This repository is "linked" to a CircleCi project that monitors for GitHub commits. When an artifact is commited to the repository, CircleCi wakes up and performs the following steps:
