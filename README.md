@@ -20,13 +20,13 @@ This repository can be "linked" to a CircleCi project that monitors for GitHub c
 ### CircleCi project setup:
 #The following steps are required to setup a CircleCi project and "link" the project to this GitHub repository;
 
-- Login to CircleCi (web) the assumption is that your CircleCi is already linked to GitHub).
-- Select the main branch in the upper left hand corner of the circleCi main screen
+- Login to CircleCi (web) with your GitHub login
+- Select the main branch in the upper left hand corner of the CircleCi main screen
 - Select "Add Projects" tab
-- Select "setup project" box next to the line listing this repository
-- Select "Start Building" box 
-  Note: nothing will build at this time, building will be triggered by a GitHub commit action
-- Select "Add Projects" tab again if necessary
+- Select "Set Up Project" next to the line listing this repository
+- Select "Start Building"  
+  Note: nothing will build at this time, building will only be triggered by a GitHub commit action
+- Select "Add Projects" tab again
 - Click on the repository name of the project you are creating, you should see the "Jobs" screen
 - Click on the gear icon next to the job, this will show the settings for the job
 - Select "AWS Permissions" and enter the Access Key ID and Secret Key ID for the AWS user described above in the Dependencies section
