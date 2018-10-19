@@ -19,7 +19,7 @@ jobs:
             terraform plan
             terraform apply -auto-approve
             ls -la
-            #terraform destroy -auto-approve
+            terraform destroy -auto-approve
    
 workflows:
   version: 2
