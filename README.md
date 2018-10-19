@@ -1,6 +1,7 @@
 ## Example of using Circleci and Terraform to create and maintain AWS resources when code is Committerd to GitHub.
 ## General flow;
-This repository is "linked" to a CircleCi project tht monitors for GitHub commits. When an artifact is commited to the repository, Circleci wakes up and performs the following steps:
+This repository is "linked" to a CircleCi project that monitors for GitHub commits. When an artifact is commited to the repository, CircleCi wakes up and performs the following steps:
+
 - Downloads a docker image in which to run the Terraform commands.
 - Downloads the contents of the GiHub repository to the docker image.
 - Runs a Terraform "init" command to read/update the Terraform state file.
