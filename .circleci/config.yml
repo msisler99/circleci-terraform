@@ -17,10 +17,10 @@ jobs:
             #git clone https://github.com/msisler99/circleci-terraform.git
             #cd circleci-terraform
             
-            terraform init -backend-config="${CIRCLE_PROJECT_REPONAME}" 
-            #-backend=true -force-copy -get=true -input=false
+            terraform init
 
             terraform plan
+            
             terraform apply -auto-approve
         
             #uncomment the next line in order to remove the resources created above and rerun.
