@@ -12,13 +12,13 @@ jobs:
             terraform init
             terraform plan
             terraform apply -auto-approve
+        
+            #uncomment the next line in order to remove the resources created above and rerun.
+            #terraform destroy -auto-approve
             
             #testing circleci env variables
             echo $CIRCLE_BRANCH
             echo $CIRCLE_PROJECT_REPONAME
-            
-            #uncomment the next line in order to remove the resources created above and rerun.
-            #terraform destroy -auto-approve
    
 workflows:
   version: 2
