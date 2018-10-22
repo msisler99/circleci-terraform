@@ -13,6 +13,7 @@ jobs:
             terraform plan
             terraform apply -auto-approve
             
+            #testing circleci env variables
             echo $CIRCLE_BRANCH
             echo $CIRCLE_PROJECT_REPONAME
             
