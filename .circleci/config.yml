@@ -10,8 +10,13 @@ jobs:
           command: |
             pwd
             ls -la
+            #testing circleci env variables
+            echo ${CIRCLE_BRANCH}
+            echo ${CIRCLE_PROJECT_REPONAME}
+
             #git clone https://github.com/msisler99/circleci-terraform.git
-            cd circleci-terraform
+            #cd circleci-terraform
+            
             terraform init
             terraform plan
             terraform apply -auto-approve
@@ -19,9 +24,6 @@ jobs:
             #uncomment the next line in order to remove the resources created above and rerun.
             #terraform destroy -auto-approve
             
-            #testing circleci env variables
-            echo ${CIRCLE_BRANCH}
-            echo ${CIRCLE_PROJECT_REPONAME}
    
 workflows:
   version: 2
