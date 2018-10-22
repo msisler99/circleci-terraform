@@ -2,7 +2,7 @@ terraform {
   backend "s3" {
     bucket = "ttg-tf-test-bucket"
     dynamodb_table = "terraform-state-lock-dev"
-    key    = "dev1-terraform.tfstate"
+    key    = "${CIRCLE_PROJECT_REPONAME}"
     region =  "us-west-2"
   }
 }
