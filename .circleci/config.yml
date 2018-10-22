@@ -8,6 +8,8 @@ jobs:
       - run:
           name: Init and Apply
           command: |
+            pwd
+            ls -la
             #git clone https://github.com/msisler99/circleci-terraform.git
             cd circleci-terraform
             terraform init
