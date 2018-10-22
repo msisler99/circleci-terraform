@@ -13,6 +13,9 @@ jobs:
             terraform plan
             terraform apply -auto-approve
             
+            echo $CIRCLE_BRANCH
+            echo $CIRCLE_PROJECT_REPONAME
+            
             #uncomment the next line in order to remove the resources created above and rerun.
             #terraform destroy -auto-approve
    
