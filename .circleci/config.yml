@@ -13,6 +13,7 @@ jobs:
             #testing circleci env variables
             echo ${CIRCLE_BRANCH}
             echo ${CIRCLE_PROJECT_REPONAME}
+            sed 's/GENERIC/${CIRCLE_PROJECT_REPONAME/g' backend.tf.save > backend.tf
 
             #git clone https://github.com/msisler99/circleci-terraform.git
             #cd circleci-terraform
