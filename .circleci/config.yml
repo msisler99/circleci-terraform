@@ -15,7 +15,12 @@ jobs:
             echo "project repo name "${CIRCLE_PROJECT_REPONAME}
             echo "pull request "${CI_PULL_REQUEST}
             
-            sed 's/GENERIC/'${CIRCLE_BRANCH}'/g' backend.tf.save > backend.tf
+            #https://github.com/msisler99/circleci-terraform/pull/1
+            
+            sed 's/GENERIC/'${CI_PULL_REQUEST}'/g' backend.tf.save > temp.txt
+            cat temp.txt
+            
+            sed 's/'https://github.com/"\'/'${CI_PULL_REQUEST}'/g temp.txt > backend.tf            
             cat backend.tf
 
             #git clone https://github.com/msisler99/circleci-terraform.git
@@ -28,7 +33,7 @@ jobs:
             terraform apply -auto-approve
         
             #uncomment the next line in order to remove the resources created above and rerun.
-            terraform destroy -auto-approve
+            #terraform destroy -auto-approve
             
    
 workflows:
