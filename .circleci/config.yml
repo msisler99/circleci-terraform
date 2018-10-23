@@ -15,7 +15,7 @@ jobs:
             echo "project repo name "${CIRCLE_PROJECT_REPONAME}
             echo "pull request "${CI_PULL_REQUEST}
             
-            sed 's/GENERIC/${CIRCLE_PROJECT_REPONAME/g' backend.tf.save > backend.tf
+            sed 's/GENERIC/${CIRCLE_PROJECT_REPONAME}/g' backend.tf.save > backend.tf
 
             #git clone https://github.com/msisler99/circleci-terraform.git
             #cd circleci-terraform
