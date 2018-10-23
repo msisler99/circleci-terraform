@@ -14,8 +14,9 @@ jobs:
             echo "branch "${CIRCLE_BRANCH}
             echo "project repo name "${CIRCLE_PROJECT_REPONAME}
             echo "pull request "${CI_PULL_REQUEST}
+            echo " Circle build number " ${CIRCLE_BUILD_NUM}
             
-            sed 's/GENERIC/'${CIRCLE_PROJECT_REPONAME}'/g' backend.tf.save > backend.tf
+            sed 's/GENERIC/'${CIRCLE_BUILD_NUM}'/g' backend.tf.save > backend.tf
             cat backend.tf
 
             #git clone https://github.com/msisler99/circleci-terraform.git
