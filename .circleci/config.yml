@@ -17,10 +17,10 @@ jobs:
             
             #https://github.com/msisler99/circleci-terraform/pull/1
             
-            sed 's/GENERIC/'${CI_PULL_REQUEST}'/g' backend.tf.save > temp.txt            
-            cat temp.txt
+            sed 's/^.*github.com\//    key ="/' ${CI_PULL_REQUEST} > temp            
+            cat temp
             
-            sed 's/^.*com/key = "/' temp.txt backend.tf
+            sed 's/GENERIC/temp/' backend.tf.save > backend.tf
             cat backend.tf
 
             #git clone https://github.com/msisler99/circleci-terraform.git
