@@ -16,10 +16,11 @@ jobs:
             echo "pull request "${CI_PULL_REQUEST}
             
             echo "${CI_PULL_REQUEST} > temp.txt
+            cat temp.txt
             
             #https://github.com/msisler99/circleci-terraform/pull/1
             
-            BUCKET=$(sed 's/^.\{19\}//' temp.txt)
+            #BUCKET=$(sed 's/^.\{19\}//' temp.txt)
             
             sed 's/GENERIC/'$BUCKET'/' backend.tf.save > backend.tf
             cat backend.tf
