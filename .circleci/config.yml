@@ -19,16 +19,13 @@ jobs:
             ls -la
             cat temp1.txt
             
-            sed 's/^.\{19\}//' temp1.txt > temp1.txt
+            sed 's/^.\{19\}//' ${CI_PULL_REQUEST} > ${CI_PULL_REQUEST}
             ls -la
             cat temp1.txt
             
             env
             sed 's/GENERIC/'temp2.txt'/g' backend.tf.save > backend.tf
             cat backend.tf
-
-            #git clone https://github.com/msisler99/circleci-terraform.git
-            #cd circleci-terraform
             
             terraform init
 
@@ -37,7 +34,7 @@ jobs:
             terraform apply -auto-approve
         
             #uncomment the next line in order to remove the resources created above and rerun.
-            terraform destroy -auto-approve
+            #terraform destroy -auto-approve
             
    
 workflows:
