@@ -8,31 +8,20 @@ jobs:
       - run:
           name: Init and Apply
           command: |
-            pwd
-            ls -la
-            #testing circleci env variables
-            echo "branch "${CIRCLE_BRANCH} 
-            echo "project repo name "${CIRCLE_PROJECT_REPONAME}
-            echo "pull request "${CI_PULL_REQUEST}
-            
-            echo "pull request= ""${CI_PULL_REQUEST}" > temp1.txt
-            cat temp1.txt
-            ls -la
+          
+            echo "${CI_PULL_REQUEST}" > temp1.txt
             
             sed 's/^.\{19\}//' temp1.txt > temp2.txt
-            cat temp1.txt
-            env
-            sed 's/GENERIC/'temp2.txt'/g' backend.tf.save > backend.tf
+            
+            sed -e "s/GENERIC/$(sed 's:/:\\/:g' temp2.txt)/" backend.tf.save > backend.tf
             cat backend.tf
-
-            #git clone https://github.com/msisler99/circleci-terraform.git
-            #cd circleci-terraform
             
             terraform init
 
             terraform plan
             
             terraform apply -auto-approve
+        
         
             #uncomment the next line in order to remove the resources created above and rerun.
             #terraform destroy -auto-approve
