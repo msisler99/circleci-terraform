@@ -17,7 +17,7 @@ jobs:
             #echo "pull request "${CI_PULL_REQUEST} > temp1.txt
             echo "${CI_PULL_REQUEST}" > temp1.txt
             
-            sed 's/^.\{32\}//' temp1.txt > temp2.txt
+            sed 's/^.\{19\}//' temp1.txt > temp2.txt
             ls -la
             cat temp2.txt
             sed -e "s/GENERIC/$(sed 's:/:\\/:g' temp2.txt)/" backend.tf.save > backend.tf
