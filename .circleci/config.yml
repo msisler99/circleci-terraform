@@ -18,7 +18,7 @@ jobs:
             sed 's/^.\{32\}//' temp1.txt
             ls -la
             cat temp1.txt
-            sed -e "s/GENERIC/$(sed 's:/:\\/:g' temp1.txt)/" backend.tf.save > backend.tf
+            sed -e "s/GENERIC/$(sed 's:/:\\/:g' temp1.txt)/" backend.tf
             cat backend.tf
             
             terraform init
