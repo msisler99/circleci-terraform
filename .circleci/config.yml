@@ -13,9 +13,11 @@ jobs:
             #testing circleci env variables
             echo "branch "${CIRCLE_BRANCH}
             echo "project repo name "${CIRCLE_PROJECT_REPONAME}
-            echo "pull request "${CI_PULL_REQUEST}
             
-            sed 's/GENERIC/'${CI_PULL_REQUEST}'/g' backend.tf.save > backend.tf
+            echo "pull request "${CI_PULL_REQUEST} > temp1.txt
+            sed 's/^.\{19\}//' temp.txt > temp2.txt
+            
+            sed 's/GENERIC/'temp2.txt'/g' backend.tf.save > backend.tf
             cat backend.tf
 
             #git clone https://github.com/msisler99/circleci-terraform.git
