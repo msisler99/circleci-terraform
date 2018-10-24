@@ -14,8 +14,7 @@ jobs:
             echo "branch "${CIRCLE_BRANCH} 
             echo "project repo name "${CIRCLE_PROJECT_REPONAME}
             
-            echo "pull request "${CI_PULL_REQUEST}
-            cat <<<"${CI_PULL_REQUEST}" > temp1.txt
+            echo "pull request "${CI_PULL_REQUEST} > temp1.txt
             ls -la
             cat temp1.txt
             
