@@ -15,7 +15,7 @@ jobs:
             echo "project repo name "${CIRCLE_PROJECT_REPONAME}
             echo "pull request "${CI_PULL_REQUEST}
             
-            echo "${CI_PULL_REQUEST} > temp.txt
+            echo ${CI_PULL_REQUEST} > temp.txt
             cat temp.txt
             
             #https://github.com/msisler99/circleci-terraform/pull/1
