@@ -18,6 +18,7 @@ jobs:
             echo ${CI_PULL_REQUEST} > temp1.txt
             
             sed 's/^.\{19\}//' temp1.txt > temp1.txt
+            ls -la
             cat temp1.txt
             
             env
