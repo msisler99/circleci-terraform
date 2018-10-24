@@ -19,10 +19,6 @@ jobs:
             ls -la
             cat temp1.txt
             
-            sed 's/^.\{19\}//' ${CI_PULL_REQUEST} > ${CI_PULL_REQUEST}
-            ls -la
-            cat temp1.txt
-            
             env
             sed 's/GENERIC/'temp2.txt'/g' backend.tf.save > backend.tf
             cat backend.tf
