@@ -13,7 +13,7 @@ jobs:
             #testing circleci env variables
             echo "branch "${CIRCLE_BRANCH} 
             echo "project repo name "${CIRCLE_PROJECT_REPONAME}
-            
+            echo "pull request "${CI_PULL_REQUEST}
             echo "pull request "${CI_PULL_REQUEST} > temp1.txt
             sed 's/^.\{19\}//' temp1.txt > temp2.txt
             cat temp1.txt
