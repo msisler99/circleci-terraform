@@ -8,20 +8,12 @@ jobs:
       - run:
           name: Init and Apply
           command: |
-            pwd
-            ls -la
-            #testing circleci env variables
-            echo "branch "${CIRCLE_BRANCH} 
-            echo "project repo name "${CIRCLE_PROJECT_REPONAME}
-            
+          
             echo "${CI_PULL_REQUEST}" > temp1.txt
             
             sed 's/^.\{19\}//' temp1.txt > temp2.txt
-            ls -la
-            cat temp2.txt
-            sed -e "s/GENERIC/$(sed 's:/:\\/:g' temp2.txt)/" backend.tf.save > backend.tf
             
-            cat backend.tf
+            sed -e "s/GENERIC/$(sed 's:/:\\/:g' temp2.txt)/" backend.tf.save > backend.tf
             
             terraform init
 
