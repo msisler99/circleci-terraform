@@ -15,6 +15,7 @@ jobs:
             echo "project repo name "${CIRCLE_PROJECT_REPONAME}
             
             echo "pull request "${CI_PULL_REQUEST} > temp1.txt
+            sed 's/^.\{25\}//' temp1.txt
             ls -la
             cat temp1.txt
             
