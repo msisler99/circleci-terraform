@@ -19,6 +19,7 @@ jobs:
             ls -la
             cat temp1.txt
             sed -e "s/GENERIC/$(sed 's:/:\\/:g' temp1.txt)/" backend.tf.save > backend.tf
+            
             cat backend.tf
             
             terraform init
