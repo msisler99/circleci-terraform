@@ -11,7 +11,7 @@ jobs:
             pwd
             ls -la
             #testing circleci env variables
-            echo "branch "${CIRCLE_BRANCH}
+            echo "branch "${CIRCLE_BRANCH} 
             echo "project repo name "${CIRCLE_PROJECT_REPONAME}
             
             echo "pull request "${CI_PULL_REQUEST} > temp1.txt
