@@ -13,9 +13,11 @@ jobs:
             #testing circleci env variables
             echo "branch "${CIRCLE_BRANCH}
             echo "project repo name "${CIRCLE_PROJECT_REPONAME}
-            echo "pull request "${CI_PULL_REQUEST} > temp.txt
-           
-           #https://github.com/msisler99/circleci-terraform/pull/1
+            echo "pull request "${CI_PULL_REQUEST}
+            
+            echo "${CI_PULL_REQUEST} > temp.txt
+            
+            #https://github.com/msisler99/circleci-terraform/pull/1
             
             BUCKET=$(sed 's/^.\{19\}//' temp.txt)
             
