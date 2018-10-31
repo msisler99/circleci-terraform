@@ -10,7 +10,7 @@ jobs:
           command: |
           
             echo "${CI_PULL_REQUEST}" > temp1.txt
-            echo "Pull request -"${CI_PULL_REQUEST}
+            echo "Pull request -"$CI_PULL_REQUEST
             echo "branch - "$CIRCLE_BRANCH
             
             
