@@ -10,6 +10,7 @@ jobs:
           command: |
           
             echo "${CI_PULL_REQUEST}" > temp1.txt
+            echo "${CI_PULL_REQUEST}"
             
             sed 's/^.\{19\}//' temp1.txt > temp2.txt
             
