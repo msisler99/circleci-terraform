@@ -35,7 +35,7 @@ jobs:
             terraform plan
             terraform apply -auto-approve
             #uncomment the next line in order to remove the resources created above and rerun.
-            #terraform destroy -auto-approve
+            terraform destroy -auto-approve
             
    
 workflows:
