@@ -17,7 +17,7 @@ jobs:
             # https://www.terraform.io/docs/backends/config.html#partial-configuration
             terraform init -backend-config="key=circleci.tfstate"
             # select workspace if it already exists
-            terraform workspace new $TF_WS || terraform workspace select $TF_WS
+            #terraform workspace new $TF_WS || terraform workspace select $TF_WS
             echo "Validate code:"
             terraform validate && echo "Code validation OK!"
   terraform_apply:
@@ -57,10 +57,10 @@ workflows:
   dev_plan:
    jobs:
       - terraform_lint
-      - terraform_apply:
-          requires:
-            - terraform_lint
-      - terraform_destroy:
-          requires:
-            - terraform_apply
+#     - terraform_apply:
+#         requires:
+#           - terraform_lint
+#     - terraform_destroy:
+#         requires:
+#           - terraform_apply
 
