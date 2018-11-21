@@ -12,14 +12,16 @@ jobs:
             #echo '====='
             TF_WS="$CIRCLE_PROJECT_REPONAME:$CIRCLE_BRANCH"
             echo "Check formatting:"
-            terraform fmt -diff -check && echo "Formatting OK!"
+            terraform fmt -diff -check
+            echo "Formatting OK!"
             echo "Init Terraform:"
             # https://www.terraform.io/docs/backends/config.html#partial-configuration
+            # Do need to init Terraform for "validate" to work
             terraform init -backend-config="key=circleci.tfstate"
-            # select workspace if it already exists
-            #terraform workspace new $TF_WS || terraform workspace select $TF_WS
+            # Don't need to select a workspace for "validate"
             echo "Validate code:"
-            terraform validate && echo "Code validation OK!"
+            terraform validate
+            echo "Code validation OK!"
   terraform_apply:
    docker:
       - image: hashicorp/terraform:0.11.7
