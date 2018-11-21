@@ -1,8 +1,6 @@
 provider "aws" {
   region     = "${var.aws_region}"
 }
-
-Some invalid stuff
  
  resource "aws_instance" "Terraform" {
    ami            = "${var.AMI_Id}"

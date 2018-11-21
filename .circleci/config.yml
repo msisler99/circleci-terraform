@@ -22,8 +22,8 @@ jobs:
             echo 'backend.tf:'
             cat backend.tf
             
-            #echo "Check formatting:"
-            #terraform fmt -diff -check
+            echo "Check formatting:"
+            terraform fmt -diff -check
             echo "Init Terraform:"
             terraform init
             echo "Validate code:"
