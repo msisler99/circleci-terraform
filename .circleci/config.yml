@@ -37,6 +37,9 @@ jobs:
             terraform apply -auto-approve
             #uncomment the next line in order to remove the resources created above and rerun.
             terraform destroy -auto-approve
+            # Still leves a stub tfstate in S3
+            terraform workspace select default # Can't delete current workspace
+            terraform workspace delete $TF_WS
             
    
 workflows:
