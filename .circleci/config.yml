@@ -1,37 +1,60 @@
 version: 2.0
 jobs:
-  terraform_plan:
+  terraform_lint:
    docker:
-      - image: hashicorp/terraform:0.11.7 
+      - image: hashicorp/terraform:0.11.7
    steps:
       - checkout
       - run:
-          name: Init and Apply
+          name: Check formatting and validate code
           command: |
             #env
             #echo '====='
-            TF_WS="$CIRCLE_PROJECT_REPONAME:$CIRCLE_BRANCH" 
+            TF_WS="$CIRCLE_PROJECT_REPONAME:$CIRCLE_BRANCH"
             echo "Check formatting:"
             terraform fmt -diff -check && echo "Formatting OK!"
             echo "Init Terraform:"
-            #terraform init -backend-config="key=$STATE_PATH/terraform.tfstate"
             # https://www.terraform.io/docs/backends/config.html#partial-configuration
             terraform init -backend-config="key=circleci.tfstate"
             # select workspace if it already exists
             terraform workspace new $TF_WS || terraform workspace select $TF_WS
             echo "Validate code:"
             terraform validate && echo "Code validation OK!"
+  terraform_apply:
+   docker:
+      - image: hashicorp/terraform:0.11.7
+   steps:
+      - checkout
+      - run:
+          name: Init and Apply
+          command: |
+            TF_WS="$CIRCLE_PROJECT_REPONAME:$CIRCLE_BRANCH"
+            terraform init -backend-config="key=circleci.tfstate"
+            # select workspace if it already exists
+            terraform workspace new $TF_WS || terraform workspace select $TF_WS
             echo "Make a plan:"
-            terraform plan
+            terraform plan  # Note: this doesn't actually get used by "apply"
+            echo "Apply TF code:"
             terraform apply -auto-approve
-            #uncomment the next 3 lines in order to remove the resources created above and rerun.
+  terraform_destroy:
+   docker:
+      - image: hashicorp/terraform:0.11.7
+   steps:
+      - checkout
+      - run:
+          name: Init and Destroy
+          command: |
+            TF_WS="$CIRCLE_PROJECT_REPONAME:$CIRCLE_BRANCH"
+            terraform init -backend-config="key=circleci.tfstate"
+            terraform workspace select $TF_WS
+            echo "Destroy TF resources and delete tfstate"
             terraform destroy -auto-approve    # Uncomment to remove resources
             terraform workspace select default # Can't delete current workspace
             terraform workspace delete $TF_WS  # Delete stub tfstate in S3
-            
-   
+
 workflows:
   version: 2
   dev_plan:
    jobs:
-      - terraform_plan
+      - terraform_lint
+
