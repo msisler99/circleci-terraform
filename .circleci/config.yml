@@ -9,11 +9,14 @@ jobs:
           name: Init and Apply
           command: |
           
+            env
+            echo '====='
             echo "${CI_PULL_REQUEST}" > temp1.txt
-            
+            cat temp1.txt
             sed 's/^.\{19\}//' temp1.txt > temp2.txt
-            
+            cat temp2.txt
             sed -e "s/GENERIC/$(sed 's:/:\\/:g' temp2.txt)/" backend.tf.save > backend.tf
+            echo 'backend.tf:'
             cat backend.tf
             
             terraform init
