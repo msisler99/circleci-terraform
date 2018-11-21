@@ -8,38 +8,26 @@ jobs:
       - run:
           name: Init and Apply
           command: |
-          
             #env
             #echo '====='
-            #echo "${CI_PULL_REQUEST}" > temp1.txt
-            #cat temp1.txt
-            #sed 's/^.\{19\}//' temp1.txt > temp2.txt
-            #cat temp2.txt
-            #sed -e "s/GENERIC/$(sed 's:/:\\/:g' temp2.txt)/" backend.tf.save > backend.tf
-            #STATE_PATH="$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/$CIRCLE_BRANCH"
-            #echo "STATE_PATH: $STATE_PATH"
-            #export TF_VAR_state_path="$STATE_PATH"
-            #sed -e "s:GENERIC:$STATE_PATH:" backend.tf.save > backend.tf
-            #echo 'backend.tf:'
-            #cat backend.tf
             TF_WS="$CIRCLE_PROJECT_REPONAME:$CIRCLE_BRANCH" 
             echo "Check formatting:"
             terraform fmt -diff -check && echo "Formatting OK!"
             echo "Init Terraform:"
             #terraform init -backend-config="key=$STATE_PATH/terraform.tfstate"
-            terraform init -backend-config="key=terraform.tfstate"
-            # select WS if it already exists
+            # https://www.terraform.io/docs/backends/config.html#partial-configuration
+            terraform init -backend-config="key=circleci.tfstate"
+            # select workspace if it already exists
             terraform workspace new $TF_WS || terraform workspace select $TF_WS
             echo "Validate code:"
             terraform validate && echo "Code validation OK!"
             echo "Make a plan:"
             terraform plan
             terraform apply -auto-approve
-            #uncomment the next line in order to remove the resources created above and rerun.
-            terraform destroy -auto-approve
-            # Still leves a stub tfstate in S3
+            #uncomment the next 3 lines in order to remove the resources created above and rerun.
+            terraform destroy -auto-approve    # Uncomment to remove resources
             terraform workspace select default # Can't delete current workspace
-            terraform workspace delete $TF_WS
+            terraform workspace delete $TF_WS  # Delete stub tfstate in S3
             
    
 workflows:
