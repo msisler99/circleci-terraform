@@ -16,22 +16,24 @@ jobs:
             #sed 's/^.\{19\}//' temp1.txt > temp2.txt
             #cat temp2.txt
             #sed -e "s/GENERIC/$(sed 's:/:\\/:g' temp2.txt)/" backend.tf.save > backend.tf
-            STATE_PATH="$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/$CIRCLE_BRANCH"
-            echo "STATE_PATH: $STATE_PATH"
+            #STATE_PATH="$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/$CIRCLE_BRANCH"
+            #echo "STATE_PATH: $STATE_PATH"
             #export TF_VAR_state_path="$STATE_PATH"
             #sed -e "s:GENERIC:$STATE_PATH:" backend.tf.save > backend.tf
-            echo 'backend.tf:'
-            cat backend.tf
+            #echo 'backend.tf:'
+            #cat backend.tf
             
             echo "Check formatting:"
             terraform fmt -diff -check && echo "Formatting OK!"
             echo "Init Terraform:"
-            terraform init -backend-config="key=$STATE_PATH/terraform.tfstate"
+            #terraform init -backend-config="key=$STATE_PATH/terraform.tfstate"
+            terraform workspace new "$CIRCLE_PROJECT_REPONAME:$CIRCLE_BRANCH"
+            terraform init -backend-config="key=terraform.tfstate"
             echo "Validate code:"
             terraform validate && echo "Code validation OK!"
-            #echo "Make a plan:"
-            #terraform plan
-            #terraform apply -auto-approve
+            echo "Make a plan:"
+            terraform plan
+            terraform apply -auto-approve
             #uncomment the next line in order to remove the resources created above and rerun.
             #terraform destroy -auto-approve
             
