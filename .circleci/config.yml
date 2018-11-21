@@ -22,13 +22,14 @@ jobs:
             #sed -e "s:GENERIC:$STATE_PATH:" backend.tf.save > backend.tf
             #echo 'backend.tf:'
             #cat backend.tf
-            
+            TF_WS="$CIRCLE_PROJECT_REPONAME:$CIRCLE_BRANCH" 
             echo "Check formatting:"
             terraform fmt -diff -check && echo "Formatting OK!"
             echo "Init Terraform:"
             #terraform init -backend-config="key=$STATE_PATH/terraform.tfstate"
             terraform init -backend-config="key=terraform.tfstate"
-            terraform workspace new "$CIRCLE_PROJECT_REPONAME:$CIRCLE_BRANCH"
+            # select WS if it already exists
+            terraform workspace new $TF_WS || terraform workspace select $TF_WS
             echo "Validate code:"
             terraform validate && echo "Code validation OK!"
             echo "Make a plan:"
