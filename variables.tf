@@ -3,12 +3,6 @@ variable "aws_region" {
   default     = "us-west-2"
 }
 
-# Set this in $TF_VAR_state_path
-variable "state_path" {
-  description = "Path to the TF state file"
-  default     = ""  # Will fail if value is not supplied
-}
-
 variable "AMI_Id" {
   description = "AMI Id to use when creating an EC2 instance"
   default     = "ami-0d1000aff9a9bad89"
