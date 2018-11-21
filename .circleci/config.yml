@@ -57,6 +57,10 @@ workflows:
   dev_plan:
    jobs:
       - terraform_lint
-      - terraform_apply
-      - terraform_destroy
+      - terraform_apply:
+          requires:
+            - terraform_lint
+      - terraform_destroy:
+          requires:
+            - terraform_apply
 
