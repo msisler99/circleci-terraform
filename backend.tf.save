@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
-    bucket = "ttg-tf-test-bucket"
-    dynamodb_table = "terraform-state-lock-dev"
+    bucket = "aburt-cammis-test"
+    dynamodb_table = "aburt-cammis-test"
     key    = "GENERIC/terraform.tfstate"
     region =  "us-west-2"
   }
