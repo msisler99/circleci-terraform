@@ -9,13 +9,16 @@ jobs:
           name: Init and Apply
           command: |
           
-            env
-            echo '====='
-            echo "${CI_PULL_REQUEST}" > temp1.txt
-            cat temp1.txt
-            sed 's/^.\{19\}//' temp1.txt > temp2.txt
-            cat temp2.txt
-            sed -e "s/GENERIC/$(sed 's:/:\\/:g' temp2.txt)/" backend.tf.save > backend.tf
+            #env
+            #echo '====='
+            #echo "${CI_PULL_REQUEST}" > temp1.txt
+            #cat temp1.txt
+            #sed 's/^.\{19\}//' temp1.txt > temp2.txt
+            #cat temp2.txt
+            #sed -e "s/GENERIC/$(sed 's:/:\\/:g' temp2.txt)/" backend.tf.save > backend.tf
+            STATE_PATH="$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/$CIRCLE_BRANCH"
+            echo "STATE_PATH: $STATE_PATH"
+            sed -e "s:GENERIC:$STATE_PATH:" backend.tf.save > backend.tf
             echo 'backend.tf:'
             cat backend.tf
             
