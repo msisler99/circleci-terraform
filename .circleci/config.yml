@@ -23,13 +23,13 @@ jobs:
             cat backend.tf
             
             echo "Check formatting:"
-            terraform fmt -diff -check
+            terraform fmt -diff -check && echo "Formatting OK!"
             echo "Init Terraform:"
             terraform init
             echo "Validate code:"
-            terraform validate
-            echo "Make a plan:"
-            terraform plan
+            terraform validate && echo "Code validation OK!"
+            #echo "Make a plan:"
+            #terraform plan
             #terraform apply -auto-approve
             #uncomment the next line in order to remove the resources created above and rerun.
             #terraform destroy -auto-approve
