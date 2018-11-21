@@ -8,8 +8,8 @@ jobs:
       - run:
           name: Check formatting and validate code
           command: |
-            #env
-            #echo '====='
+            env
+            echo '====='
             TF_WS="$CIRCLE_PROJECT_REPONAME:$CIRCLE_BRANCH"
             echo "Check formatting:"
             terraform fmt -diff -check
@@ -30,6 +30,8 @@ jobs:
       - run:
           name: Init and Apply
           command: |
+            env
+            echo '====='
             TF_WS="$CIRCLE_PROJECT_REPONAME:$CIRCLE_BRANCH"
             terraform init -backend-config="key=circleci.tfstate"
             # select workspace if it already exists
@@ -46,6 +48,8 @@ jobs:
       - run:
           name: Init and Destroy
           command: |
+            env
+            echo '====='
             TF_WS="$CIRCLE_PROJECT_REPONAME:$CIRCLE_BRANCH"
             terraform init -backend-config="key=circleci.tfstate"
             terraform workspace select $TF_WS
